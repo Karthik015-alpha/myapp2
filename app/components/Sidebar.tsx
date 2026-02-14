@@ -99,14 +99,25 @@ import { useState } from "react";
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
 
+  const [product, setProduct] = useState(false);
   const [books, setBooks] = useState(false);
   const [electronics, setElectronics] = useState(false);
   const [furniture, setFurniture] = useState(false);
 
+  const book = [
+    { name: "History Books", path: "/Books/HistoryBooks" },
+    { name: "Science Books", path: "/Books/ScienceBooks" },
+  ];
+
+  const furnitureList = [
+    { name: "Seating Furniture", path: "/Products/Furniture/SeatingFurniture" },
+    { name: "Sleeping Furniture", path: "/Products/Furniture/SleepingFurniture" },
+  ];
+
   return (
     <div className="flex">
       
-      {/* 🔹 Mobile Menu Button */}
+      {/* 🔹 Mobile Button */}
       <button
         onClick={() => setOpen(!open)}
         className="md:hidden fixed top-4 left-4 z-50 bg-gray-900 text-white p-2 rounded"
@@ -114,7 +125,7 @@ export default function Sidebar() {
         ☰
       </button>
 
-      {/* 🔹 Overlay (Mobile) */}
+      {/* 🔹 Overlay */}
       {open && (
         <div
           onClick={() => setOpen(false)}
@@ -132,76 +143,97 @@ export default function Sidebar() {
         md:translate-x-0
         `}
       >
-        <h1 className="text-xl font-bold mb-5">Menu</h1>
+        <h2 className="text-xl font-bold mb-6">Menu</h2>
 
-        {/* 🔹 Home */}
-        <Link href="/" className="block py-2 hover:text-gray-400">
-          Home
-        </Link>
+        <nav className="flex flex-col gap-3">
 
-        {/* 🔹 Books */}
-        <button
-          onClick={() => setBooks(!books)}
-          className="w-full text-left py-2 hover:text-gray-400"
-        >
-          Books ▼
-        </button>
+          {/* Home */}
+          <Link href="/" className="hover:text-blue-400">
+            Home
+          </Link>
 
-        {books && (
-          <div className="ml-4 flex flex-col gap-1">
-            <Link href="/books/history" className="hover:text-gray-400">
-              History
-            </Link>
-            <Link href="/books/science" className="hover:text-gray-400">
-              Science
-            </Link>
-          </div>
-        )}
+          {/* Products */}
+          <button
+            onClick={() => {
+              setProduct(!product);
+              setBooks(false);
+            }}
+            className="text-left hover:text-blue-400"
+          >
+            Products ▼
+          </button>
 
-        {/* 🔹 Electronics */}
-        <button
-          onClick={() => setElectronics(!electronics)}
-          className="w-full text-left py-2 hover:text-gray-400"
-        >
-          Electronics ▼
-        </button>
+          {product && (
+            <div className="ml-4 flex flex-col gap-2">
 
-        {electronics && (
-          <div className="ml-4 flex flex-col gap-1">
-            <Link href="/electronics/mobile" className="hover:text-gray-400">
-              Mobile
-            </Link>
-            <Link href="/electronics/laptop" className="hover:text-gray-400">
-              Laptop
-            </Link>
-          </div>
-        )}
+              {/* Electronics */}
+              <button
+                onClick={() => {
+                  setElectronics(!electronics);
+                  setFurniture(false);
+                }}
+                className="text-left hover:text-blue-400"
+              >
+                Electronics
+              </button>
 
-        {/* 🔹 Furniture */}
-        <button
-          onClick={() => setFurniture(!furniture)}
-          className="w-full text-left py-2 hover:text-gray-400"
-        >
-          Furniture ▼
-        </button>
+              {electronics && (
+                <div className="ml-4 flex flex-col gap-2">
+                  <Link href="/Products/Electronics/Mobile">Mobiles</Link>
+                  <Link href="/Products/Electronics/TV">TVs</Link>
+                </div>
+              )}
 
-        {furniture && (
-          <div className="ml-4 flex flex-col gap-1">
-            <Link href="/furniture/chair" className="hover:text-gray-400">
-              Chair
-            </Link>
-            <Link href="/furniture/table" className="hover:text-gray-400">
-              Table
-            </Link>
-          </div>
-        )}
+              {/* Furniture */}
+              <button
+                onClick={() => {
+                  setFurniture(!furniture);
+                  setElectronics(false);
+                }}
+                className="text-left hover:text-blue-400"
+              >
+                Furniture
+              </button>
+
+              {furniture && (
+                <div className="ml-4 flex flex-col gap-2">
+                  {furnitureList.map((item, index) => (
+                    <Link key={index} href={item.path}>
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Books */}
+          <button
+            onClick={() => {
+              setBooks(!books);
+              setProduct(false);
+            }}
+            className="text-left hover:text-blue-400"
+          >
+            Books ▼
+          </button>
+
+          {books && (
+            <div className="ml-4 flex flex-col gap-2">
+              {book.map((item, index) => (
+                <Link key={index} href={item.path}>
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          )}
+        </nav>
       </aside>
 
       {/* 🔹 Main Content */}
-      <main className="flex-1 p-6 md:ml-0">
+      <main className="flex-1 p-6">
         <h1 className="text-2xl font-bold">Main Content</h1>
       </main>
-
     </div>
   );
 }

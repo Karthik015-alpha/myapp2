@@ -30,6 +30,8 @@ export function Sidebar() {
 
 	return (
 		<div className="flex">
+			{/* spacer for sidebar width on desktop */}
+			<div className="hidden md:block w-64" aria-hidden />
 			{/* 🔹 Mobile Button (vertically centered left) */}
 			<button
 				onClick={() => setOpen(!open)}

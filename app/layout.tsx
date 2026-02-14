@@ -6,11 +6,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="en">
 			<body className="bg-black text-white">
-                 <header className="bg-gray-800 text-white p-4 flex items-center justify-center md:justify-start md:pl-72">
-          <h1 className="text-xl font-bold">Sales Company</h1>
-         </header>
 				<SidebarProvider>
-					<div className="flex">
+					<header className="bg-gray-800 text-white p-4 flex items-center justify-center md:justify-start md:pl-64 fixed top-0 left-0 w-full z-40">
+						<h1 className="text-xl font-bold">Sales Company</h1>
+					</header>
+					<div className="flex pt-14">
 						<Sidebar />
 						<SidebarContent>{children}</SidebarContent>
 					</div>
@@ -25,7 +25,7 @@ function SidebarContent({ children }: { children: ReactNode }) {
 	// If you later add SidebarContext logic, you can use it here for shifting
 	return (
 		<div className="flex flex-col flex-1 md:ml-64 transition-all duration-300">
-			<main className="p-6 mt-14 md:mt-0">{children}</main>
+			<main className="p-6">{children}</main>
 		</div>
 	);
 }

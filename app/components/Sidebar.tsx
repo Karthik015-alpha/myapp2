@@ -17,7 +17,15 @@ export default function Sidebar() {
     {name:"Sleeping Furniture",path:"/Products/Furniture/SleepingFurniture"}
   ]
   return (
-  <aside className="w-64 h-screen sticky top-0 bg-gray-900 text-white p-5">
+  <aside className="
+  fixed md:sticky
+  top-0 left-0
+  w-64 h-screen
+  bg-gray-900 text-white p-5
+  transform -translate-x-full md:translate-x-0
+  transition-transform duration-300
+">
+
       <h2 className="text-xl font-bold mb-6">Menu</h2>
       <nav className="flex flex-col gap-3">
         <Link href="/" className="hover:text-blue-400">

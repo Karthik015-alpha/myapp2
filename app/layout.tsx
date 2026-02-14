@@ -28,23 +28,27 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-black text-white">
 
-        {/* 🔹 Header */}
-        <header className="h-14 flex items-center px-4 bg-white shadow">
-          <h1 className="text-xl font-bold">Sales Company</h1>
-        </header>
-
-        {/* 🔹 Layout */}
         <div className="flex">
 
           {/* Sidebar */}
           <Sidebar />
 
-          {/* Main Content */}
-          <main className="flex-1 p-6 md:ml-64 mt-14 md:mt-0">
-            {children}
-          </main>
+          {/* Right Side */}
+          <div className="flex flex-col flex-1 md:ml-64">
+
+            {/* 🔹 Header */}
+            <header className="fixed md:static top-0 left-0 w-full h-14 bg-gray-800 flex items-center px-4 z-40">
+              <h1 className="text-lg font-bold">Sales Company</h1>
+            </header>
+
+            {/* 🔹 Main Content */}
+            <main className="p-6 mt-14 md:mt-0">
+              {children}
+            </main>
+
+          </div>
 
         </div>
 
@@ -52,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
 
 // import "./globals.css";
 // import Sidebar from "./components/Sidebar";

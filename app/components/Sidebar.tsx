@@ -119,11 +119,12 @@ export default function Sidebar() {
       
       {/* 🔹 Mobile Button */}
       <button
-        onClick={() => setOpen(!open)}
-        className="md:hidden fixed top-4 left-4 z-50 bg-gray-900 text-white p-2 rounded"
-      >
-        ☰
-      </button>
+  onClick={() => setOpen(!open)}
+  className="md:hidden fixed top-3 left-3 z-50 bg-gray-900 text-white p-2 rounded"
+>
+  ☰
+</button>
+
 
       {/* 🔹 Overlay */}
       {open && (
@@ -135,14 +136,17 @@ export default function Sidebar() {
 
       {/* 🔹 Sidebar */}
       <aside
-        className={`
-        fixed md:sticky top-0 left-0 z-50
-        w-64 h-screen bg-gray-900 text-white p-5
-        transform transition-transform duration-300
-        ${open ? "translate-x-0" : "-translate-x-full"}
-        md:translate-x-0
-        `}
-      >
+  className={`
+    fixed md:fixed
+    top-14 md:top-0 left-0
+    w-64 h-[calc(100vh-56px)] md:h-screen
+    bg-gray-900 text-white p-5 z-50
+    transform transition-transform duration-300
+    ${open ? "translate-x-0" : "-translate-x-full"}
+    md:translate-x-0
+  `}
+>
+
         <h2 className="text-xl font-bold mb-6">Menu</h2>
 
         <nav className="flex flex-col gap-3">

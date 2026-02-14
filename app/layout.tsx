@@ -5,23 +5,54 @@ export const metadata: Metadata = {
   title: "Sales Company",
   description: "Sales and Marketing Company",
 };
-export default function RootLayout({  children,}: { children: React.ReactNode;}) {
+// export default function RootLayout({  children,}: { children: React.ReactNode;}) {
+//   return (
+//     <html lang="en">
+//       <body>
+//         <header>
+//           <h1 className="text-xl font-bold">Sales Company</h1>
+//         </header>
+//         <div className="flex min-h-screen">
+//           <Sidebar />
+//           <main className="flex-1 p-6">
+//             {children}
+//           </main>
+//         </div>
+//       </body>
+//     </html>
+//   );
+// }
+
+// 2
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <header>
+
+        {/* 🔹 Header */}
+        <header className="h-14 flex items-center px-4 bg-white shadow">
           <h1 className="text-xl font-bold">Sales Company</h1>
         </header>
-        <div className="flex min-h-screen">
+
+        {/* 🔹 Layout */}
+        <div className="flex">
+
+          {/* Sidebar */}
           <Sidebar />
-          <main className="flex-1 p-6">
+
+          {/* Main Content */}
+          <main className="flex-1 p-6 md:ml-64 mt-14 md:mt-0">
             {children}
           </main>
+
         </div>
+
       </body>
     </html>
   );
 }
+
 // import "./globals.css";
 // import Sidebar from "./components/Sidebar";
 // import type { Metadata } from "next";

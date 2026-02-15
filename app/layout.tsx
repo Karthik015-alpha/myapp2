@@ -36,21 +36,24 @@ import "./globals.css";
 import { ReactNode } from "react";
 import { Sidebar, SidebarProvider } from "./components/Sidebar";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-black text-white">
+      <body className="bg-black text-whit flex flex-col min-h-screen">
         <SidebarProvider>
           
           {/* Header */}
           <Header />
 
           {/* Layout */}
-          <div className="flex pt-14">
+          <div className="flex pt-14 flex-1">
             <Sidebar />
             <main className="flex-1 md:ml-64 p-6">{children}</main>
           </div>
+
+		   <Footer />
 
         </SidebarProvider>
       </body>

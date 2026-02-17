@@ -135,7 +135,7 @@ export default function StudentPage() {
 
       {/* 🔹 Title */}
       <h1 className="text-3xl font-bold mb-6 text-gray-800">
-        🎓 Student Management
+         Student Management
       </h1>
 
       {/* 🔹 Add / Edit Form */}
@@ -269,14 +269,14 @@ export default function StudentPage() {
                         }}
                         className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
                       >
-                        Edit
+                        📝
                       </button>
 
                       <button
                         onClick={() => deleteStudent(student.id)}
                         className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                       >
-                        Delete
+                        🚮
                       </button>
                     </td>
                   </tr>
